@@ -154,6 +154,42 @@ h2 {
 
 }
 
+.container-header{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.container-header .txt{
+  position: relative;
+   border-bottom: 2px solid #adadad ;
+}
+
+.txt input{
+  background:none;
+  height: 40px;
+  padding: 0 5px;
+  border: none;   
+  outline: none;
+}
+
+.txt span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #012734;
+  transition: 0.5s;
+}
+
+.txt input:focus ~ span::before,
+.txt input:not(:placeholder-shown) ~ span::before{
+width: 100%;
+}
+
+
 table {
   padding: 24px;
   width: 100%;
@@ -208,6 +244,13 @@ tbody{
 .offer-details {
   padding: 3px 20px;
 }
+
+.admin-buttons{
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-around;
+}
+
 .offer-card .des{
   text-align: left;
 }

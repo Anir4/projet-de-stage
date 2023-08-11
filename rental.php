@@ -129,7 +129,7 @@ include './includes/display.php';
                         <div >
                             <h1>Step 2/3: Package</h1>
                         </div>
-                        <?php displayoffers(); ?>
+                        <?php displayoffers("rental"); ?>
 
                         <div class="buttons">
                             <button class="prev-btn" onclick="prevStep(1)">Previous</button>

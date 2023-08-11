@@ -16,6 +16,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="./public/styles/style3.css">
+  <script src="./public/js/rental.js"></script>
+
 </head>
 <body>
   <section class="section">
@@ -61,7 +63,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
       <p class="order">
       <?php if ($_SESSION['id'] == "1" && $_SESSION['firstname'] == "ADMIN") 
 { ?>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add offer</button><?php } else {?>
+   <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="modifyOffer('')">Add offer</button> <?php } else {?>
       <a href="./rental.php">
     <button>Place an order</button></a>
 <?php } ?>
@@ -75,13 +77,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
   <div class="container">
   <h2>Promotions and Offers</h2>
     <section class="Promotions">
-<?php display()?>
+<?php displayoffers("")?>
 
     </section>
   </div>
 
 <div class="container">
+  <div class="container-header">
       <h2>Orders</h2>
+      <div class="txt">
+      <input type="text" id="orderSearch" placeholder="Search a user name...">
+      <span></span>
+      </div>
+  </div>
       <?php showorders()?>
 </div>
 
@@ -97,7 +105,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
   <div class="container">
   <h2>Promotions and Offers</h2>
     <section class="Promotions">
-<?php display()?>
+<?php displayoffers("")?>
 
     </section>
   </div>
@@ -116,6 +124,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
       <form action="./submit_offer.php" method="post" enctype="multipart/form-data">
       <div class="modal-body">
               <div class="form-group">
+              <input type="hidden" name="offerId" id="offerId" >
                 <label for="title">Offer Title :</label>
                 <input type="text" class="form-control" id="title" name="title">
               </div>
@@ -136,21 +145,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
               </div>
 
               <div class="form-group">
-                <label for="title">Kilometre (text) :</label>
+                <label for="km">Kilometre (text) :</label>
                 <input type="text" class="form-control" id="km" name="km">
               </div>
 
               <div class="form-group">
                 <label for="detai1l">Detail :</label>
-                <input type="text" class="form-control" id="detail" name="detail1" required>
+                <input type="text" class="form-control" id="detail1" name="detail1" required>
               </div>
               <div class="form-group">
                 <label for="detail2">Detail :</label>
-                <input type="text" class="form-control" id="detail" name="detail2" >
+                <input type="text" class="form-control" id="detail2" name="detail2" >
               </div>
               <div class="form-group">
                 <label for="detail3">Detail :</label>
-                <input type="text" class="form-control" id="detail" name="detail3" >
+                <input type="text" class="form-control" id="detail3" name="detail3" >
               </div>
               
         </div>
@@ -173,6 +182,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['firstname']))
     </nav>
   </footer>
 </body>
+<script>
+  document.getElementById('orderSearch').addEventListener('keyup', function() {
+    const input = this.value.toLowerCase();
+    const table = document.getElementById('ordersTable');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+      const userCell = rows[i].querySelector('.user-name');
+        if (userCell) {
+            const userName = userCell.textContent.toLowerCase();
+            rows[i].style.display = userName.includes(input) ? '' : 'none';
+        }
+    }
+});
+</script>
 </html>
 <?php
   }else{

@@ -2,6 +2,74 @@
 var collectedInputs = {};
 
 
+function modifyOffer(offerId) {
+
+    if (offerId == '') {
+        document.getElementById('offerId').value = '';
+        document.getElementById('title').value = '';
+        document.getElementById('price').value = '';
+        document.getElementById('duration').value = '';
+        document.getElementById('km').value = '';
+        document.getElementById('detail1').value = '';
+        document.getElementById('detail2').value = '';
+        document.getElementById('detail3').value = '';
+    }
+    else {
+        document.getElementById('offerId').value = offerId;
+        
+        let titleElement = document.getElementById('title_' + offerId);
+        if (titleElement) {
+            document.getElementById('title').value = titleElement.getAttribute('data-title');
+        } else {
+            document.getElementById('title').value = '';
+        }
+
+        let priceElement = document.getElementById('price_' + offerId);
+        if (priceElement) {
+            document.getElementById('price').value = priceElement.getAttribute('data-price');
+        } else {
+            document.getElementById('price').value = '';
+        }
+
+        let durationElement = document.getElementById('duration_' + offerId);
+        if (durationElement) {
+            document.getElementById('duration').value = durationElement.getAttribute('data-duration');
+        } else {
+            document.getElementById('duration').value = '';
+        }
+
+        let kmElement = document.getElementById('km_' + offerId);
+        if (kmElement) {
+            document.getElementById('km').value = kmElement.getAttribute('data-km');
+        } else {
+            document.getElementById('km').value = '';
+        }
+
+        let detail1Element = document.getElementById('d1_' + offerId);
+        if (detail1Element) {
+            document.getElementById('detail1').value = detail1Element.getAttribute('data-d1');
+        } else {
+            document.getElementById('detail1').value = '';
+        }
+
+        let detail2Element = document.getElementById('d2_' + offerId);
+        if (detail2Element) {
+            document.getElementById('detail2').value = detail2Element.getAttribute('data-d2');
+        } else {
+            document.getElementById('detail2').value = '';
+        }
+
+        let detail3Element = document.getElementById('d3_' + offerId);
+        if (detail3Element) {
+            document.getElementById('detail3').value = detail3Element.getAttribute('data-d3');
+        } else {
+            document.getElementById('detail3').value = '';
+        }
+
+}
+}
+
+
 // Function to show the next step
 function nextStep(nextStepNum) {
     var currentStepNum = nextStepNum - 1;
@@ -81,7 +149,7 @@ function collectStepInputs(stepNum) {
             var durationElement = document.getElementById('duration_' + selectedOffer.value);
             if (durationElement) {
                 stepInputs.duration = durationElement.getAttribute('data-duration');
-                stepInputs.rentduration=stepInputs['duration'] * stepInputs['quantity'];
+                stepInputs.rentduration = stepInputs['duration'] * stepInputs['quantity'];
             }
 
             var kmElement = document.getElementById('km_' + selectedOffer.value);
@@ -117,7 +185,7 @@ function collectStepInputs(stepNum) {
 
     }
     collectedInputs[stepNum] = stepInputs;
-  //  console.log("Collected Inputs for Step " + stepNum + ":", stepInputs);
+    //  console.log("Collected Inputs for Step " + stepNum + ":", stepInputs);
 
 }
 
@@ -161,9 +229,9 @@ function show() {
     var total = document.createElement("div");
     total.classList.add("total");
     total.innerHTML = '<label>Order Total:</label>';
-    var totalnbr =document.createElement("div");
+    var totalnbr = document.createElement("div");
     totalnbr.classList.add("nbr");
-    totalnbr.innerHTML='<div>' + collectedInputs[3].total + ' DH</div>';
+    totalnbr.innerHTML = '<div>' + collectedInputs[3].total + ' DH</div>';
     total.appendChild(totalnbr);
 
     offerInfo.appendChild(description);
@@ -185,7 +253,7 @@ function prevStep(prevStepNum) {
 }
 
 // Function to handle the final confirmation and submit the form
-    function confirmation(){
+function confirmation() {
     // Get the collected step inputs
     var collectedData = collectedInputs;
 
@@ -204,7 +272,7 @@ function prevStep(prevStepNum) {
     xhr.send(jsonData);
 
     // Handle the response (optional)
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 // Handle success response

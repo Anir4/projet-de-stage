@@ -23,6 +23,15 @@ $conn = mysqli_connect($bd_server, $bd_user, $bd_pass, $bd_name);
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["id"])) {
 
 $offerID = $_POST["id"];
+    //DELETING OLD PICTURE
+$oldImagePathQuery = "SELECT image_path FROM offers WHERE id='$offerID'";
+    $oldImagePathResult = mysqli_query($conn, $oldImagePathQuery);
+    $oldImagePathRow = mysqli_fetch_assoc($oldImagePathResult);
+    $oldImagePath = $oldImagePathRow['image_path'];
+
+    if (file_exists($oldImagePath)) {
+        unlink($oldImagePath);
+    }
 
 $sql = "DELETE FROM orders WHERE selectedOffer = $offerID";
 mysqli_query($conn, $sql);
