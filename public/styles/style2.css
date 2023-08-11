@@ -1,0 +1,167 @@
+.container{
+  border-radius: 20px;
+    width: 45%;
+}
+.step-container h1{
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h2{
+  display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.step-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+button{
+  margin: 0 !important;
+}
+
+.buttons{
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+label
+{  
+    display: block;
+    color: #03d3b9;
+    font-weight: bolder;
+    margin: 16px 0;
+    width: 95%;
+    text-align: left;
+}
+
+
+.description0{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px;
+}
+.description {
+margin: 0;
+text-align: left;
+}
+
+.offer-card2{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+    max-height: none;
+    width: 315px;
+}
+
+.price{
+  background-color: #fff;
+  border-radius: 10px;
+}
+.offer-card2 .des{
+  text-align: left;
+}
+
+.step-container input[type=radio]{
+  width: 20px;
+    height: 20px;
+}
+
+.step-container input{
+  height: 40px;
+  width: -webkit-fill-available;
+  border-radius: 10px;
+  border: 0.5px solid #0d1721;
+  padding: 10px;
+  background-color: transparent;
+  margin-bottom: 2px;
+  font-size: larger;
+}
+
+select {
+  height: 40px;
+  border-radius: 10px;
+  border: 0.5px solid #0d1721;
+  padding: 0 10px;
+  background-color: transparent;
+  margin-bottom: 2px;
+  font-size: larger;
+  width: 80%;
+}
+
+.quantityInput{
+  display: flex;
+  flex-direction: column;
+}
+.mototype{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+    width: -webkit-fill-available;
+}
+.biketype{
+  color: #03d3b9;
+  font-weight: bolder;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#step3 input[type=checkbox]{
+  height: 20px;
+}
+
+.nbr{
+    width:-webkit-fill-available;
+    display: block;
+    border: 1px solid gray;
+    font-size: 20px;
+    padding: 6px;
+    text-align: center;
+}
+
+@media (max-width: 650px)
+{
+.container{
+  width: auto;
+}
+
+}
+
+
+@media (max-width: 900px)
+{
+  .offer-card2{
+    width: auto;
+  }
+}

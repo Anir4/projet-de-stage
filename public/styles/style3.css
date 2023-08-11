@@ -1,0 +1,285 @@
+html{
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100%;
+  background-color: #cbcece;
+  font-family: BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.section{
+  display: flex;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.main-content {
+  flex: 1 1 0;
+  max-width: 85%;
+  padding: 20px;
+  padding-bottom: 13%;
+}
+
+.side-menu {
+  flex: 0 0 auto;
+  width: 15%;
+  background-color: #012734;
+  color: #fff;
+  padding: 20px;
+}
+#mobilemenu{ 
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border: none;
+    background-color: #03d2b8;
+}
+
+
+
+.side-menu img {
+  width: 90%;
+  display: block;
+  margin: 0 auto 70px;
+}
+
+.side-menu nav ul,
+.offcanvas-body nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.side-menu nav ul li,
+.offcanvas-body nav ul li {
+  margin-bottom: 53.6px;
+}
+
+.side-menu nav ul li a,
+.offcanvas-body nav ul li a,
+.offer-details a {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+header h1 {
+  font-size: 1.5em;
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+}
+
+
+footer {
+  margin-top: auto;
+  bottom: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 10px 0;
+
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+footer nav ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+header{
+  background-image: url(../images/bg.jpg);
+  background-position: center;
+  background-size: cover;
+  margin: -20px;
+  margin-bottom: auto;
+  padding: 50px 100px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.199), 0 16px 64px rgba(0, 0, 0, .1);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(11, 11, 11, 0.603);
+
+}
+button {
+  padding: 10px 20px;
+  background-color: #03d2b8;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin: 5px 50px;
+}
+.offer-card button
+{
+  margin: 0;
+}
+
+header p{
+  display: inline-flex;
+  flex-direction: column;
+}
+
+button:hover {
+  background-color: #009b86;
+}
+    
+.container {
+  background-color: #fff;
+  box-shadow: 2px 5px 11px 1px rgb(0 0 0 / 64%);
+  -webkit-box-shadow: 6px 6px 14px 3px rgb(11 11 11 / 66%);
+  margin: -25px auto 50px auto;
+  overflow: auto;
+  padding: 20px;
+}
+
+
+
+h2 {
+  margin: 0 0 20px 0;
+  margin-bottom: 10px;
+
+}
+
+table {
+  padding: 24px;
+  width: 100%;
+  border-radius: 15px;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.admintable{
+  width: max-content;
+}
+table, th, td {
+  border: none;
+}
+
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+thead {
+  border-bottom: solid 2px #000000;
+}
+tbody{
+  border-bottom: solid 1px #00000080;
+}
+
+.Promotions{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly
+  ;}
+
+
+
+.offer-card {
+  text-align: center;
+  width: 315px;
+  min-width: 270px;
+  max-height: 430px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin: 20px 10px;
+  box-shadow: 0 2px 11px 1px rgb(0 0 0 / 56%);
+}
+
+.offreimg{
+  margin-top: 5px;
+  height: 35%;
+  width: 70%;
+}
+
+.offer-details {
+  padding: 3px 20px;
+}
+.offer-card .des{
+  text-align: left;
+}
+
+.offer-details h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #03d3b9;
+}
+
+
+p{
+  margin-bottom: 4px;
+}
+
+.description {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-close:hover{
+  background-color: transparent;
+}
+
+
+@media (min-width: 1315px) {
+  .side-menu{
+width: 12%;
+  }
+  .main-content{
+    max-width: 88%;
+  }
+  
+}
+
+
+
+@media (min-width: 1900px) {
+  .side-menu{
+width: 9%;
+  }
+  .main-content{
+    max-width: 91%;
+  }
+  
+}
+
+
+
+@media (max-width: 650px)
+{
+.side-menu{
+  display: none;
+}
+#mobilemenu{ 
+  display: block;
+}
+
+.main-content{
+  max-width: 100%;
+}
+header{
+  padding: 50px 20px;
+}
+.offer-card{
+  align-self: baseline;
+  min-width: 235px;
+
+}
+}
