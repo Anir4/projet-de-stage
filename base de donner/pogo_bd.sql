@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost: 3307
--- Generation Time: Aug 11, 2023 at 11:50 PM
+-- Generation Time: Aug 12, 2023 at 10:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,20 +66,19 @@ CREATE TABLE `orders` (
   `bikenbr` int(11) NOT NULL,
   `rentDate` datetime NOT NULL,
   `total` decimal(10,2) NOT NULL,
-  `orderDate` timestamp NOT NULL DEFAULT current_timestamp()
+  `orderDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('Processing','Confirmed','Canceled','Rejected') NOT NULL DEFAULT 'Processing'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `city`, `biketype`, `rentduration`, `selectedOffer`, `quantity`, `Address`, `bikenbr`, `rentDate`, `total`, `orderDate`) VALUES
-(42, 13, 'Marrakech', 'Pogo X', 72, 20, 3, 'mhamid marrakech', 2, '2023-08-10 00:07:00', 714.00, '2023-08-09 22:08:03'),
-(43, 13, 'Ben guerir', 'Pogo X', 30, 22, 1, 'whus,yjfg', 2, '2023-08-10 00:23:00', 2998.00, '2023-08-09 22:24:11'),
-(45, 44, 'Ben guerir', 'Pogo Z', 60, 22, 2, 'hujuijv', 1, '2023-08-10 01:40:00', 2998.00, '2023-08-09 23:42:38'),
-(47, 13, 'Agadir', 'Pogo Z', 60, 22, 2, '', 1, '2023-08-10 14:24:00', 2998.00, '2023-08-10 12:24:50'),
-(48, 13, 'Marrakech', 'Pogo Z', 48, 20, 2, 'mhamid', 1, '2023-08-11 10:50:00', 238.00, '2023-08-11 08:50:54'),
-(51, 13, 'Ben guerir', 'Pogo X', 24, 20, 1, 'mhamid', 1, '2023-08-11 23:37:00', 119.00, '2023-08-11 21:39:00');
+INSERT INTO `orders` (`id`, `user_id`, `city`, `biketype`, `rentduration`, `selectedOffer`, `quantity`, `Address`, `bikenbr`, `rentDate`, `total`, `orderDate`, `status`) VALUES
+(42, 13, 'Marrakech', 'Pogo X', 72, 20, 3, 'mhamid marrakech', 2, '2023-08-10 00:07:00', 714.00, '2023-08-09 22:08:03', 'Confirmed'),
+(43, 13, 'Ben guerir', 'Pogo X', 30, 22, 1, 'whus,yjfg', 2, '2023-08-10 00:23:00', 2998.00, '2023-08-09 22:24:11', 'Canceled'),
+(45, 44, 'Ben guerir', 'Pogo Z', 60, 22, 2, 'hujuijv', 1, '2023-08-10 01:40:00', 2998.00, '2023-08-09 23:42:38', 'Rejected'),
+(56, 1, 'Marrakech', 'Pogo X', 60, 22, 2, '', 1, '2023-08-12 22:04:00', 2998.00, '2023-08-12 20:04:33', 'Processing');
 
 -- --------------------------------------------------------
 
@@ -141,13 +140,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `offers`
 --
 ALTER TABLE `offers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `users`

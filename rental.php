@@ -185,7 +185,7 @@ include './includes/display.php';
                             </div>
                             <div class="des">
                                 <img src="./public//images/check2.png" width="30px">
-                                <span>Phone: <?php echo $_SESSION['email']; ?></span>
+                                <span>Email: <?php echo $_SESSION['email']; ?></span>
                             </div>
                             </div>
                         </div>

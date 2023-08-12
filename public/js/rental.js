@@ -1,6 +1,60 @@
 
 var collectedInputs = {};
 
+function cancelOrder(orderId){
+    $.ajax({
+        type: "POST",
+        url: "./update_order_status.php", 
+        data: { orderId: orderId, status: "Canceled" },
+        success: function(response) {
+            var statusButton = document.getElementById('statusButton_'+ orderId);
+            statusButton.classList.remove('btn-warning');
+            statusButton.classList.remove('btn-success');
+            statusButton.classList.add('btn-danger');
+            statusButton.textContent = 'Canceled';
+        },
+        error: function(error) {
+            console.error("Error confirming order: " + error);
+        }
+    });
+}
+
+function confirmOrder(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "./update_order_status.php", 
+        data: { orderId: orderId, status: "Confirmed" },
+        success: function(response) {
+            var statusButton = document.getElementById('statusButton_'+ orderId);
+    statusButton.classList.remove('btn-warning');
+    statusButton.classList.remove('btn-danger');
+    statusButton.classList.add('btn-success');
+    statusButton.textContent = 'Confirmed';
+        },
+        error: function(error) {
+            console.error("Error confirming order: " + error);
+        }
+    });
+}
+
+function rejectOrder(orderId) {
+    $.ajax({
+        type: "POST",
+        url: "./update_order_status.php", 
+        data: { orderId: orderId, status: "Rejected" },
+        success: function(response) {
+            var statusButton = document.getElementById('statusButton_'+ orderId);
+            statusButton.classList.remove('btn-warning');
+            statusButton.classList.remove('btn-success');
+            statusButton.classList.add('btn-danger');
+            statusButton.textContent = 'Rejected';
+        },
+        error: function(error) {
+            console.error("Error rejecting order: " + error);
+        }
+    });
+}
+
 
 function modifyOffer(offerId) {
 
@@ -242,7 +296,6 @@ function show() {
 }
 
 
-// Function to show the previous step
 function prevStep(prevStepNum) {
     var currentStepNum = prevStepNum + 1;
     var currentStep = document.getElementById("step" + currentStepNum);
@@ -252,35 +305,26 @@ function prevStep(prevStepNum) {
     prevStep.style.display = "flex";
 }
 
-// Function to handle the final confirmation and submit the form
 function confirmation() {
-    // Get the collected step inputs
     var collectedData = collectedInputs;
 
-    // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
 
-    // Set up the request
     var url = "submit_order.php";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
 
-    // Convert the collected data to JSON format
     var jsonData = JSON.stringify(collectedData);
 
-    // Send the JSON data
     xhr.send(jsonData);
 
-    // Handle the response (optional)
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                // Handle success response
                 var response = JSON.parse(xhr.responseText);
                 alert(response.message);
                 window.location.reload();
             } else {
-                // Handle error response
                 alert("An error occurred. Please try again later.");
             }
         }

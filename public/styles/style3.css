@@ -200,6 +200,14 @@ table {
 .admintable{
   width: max-content;
 }
+.admintable button{
+margin: 5px 0;
+}
+
+.card-body{
+  padding: 9px;
+}
+
 table, th, td {
   border: none;
 }

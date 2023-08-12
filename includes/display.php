@@ -132,11 +132,28 @@ function showorders()
         <th>Rent Date</th>
         <th>Order Date</th>
         <th>Address</th>
+        <th>Status</th>
         </tr>
  </thead>
  <tbody>';
 
         while ($row = mysqli_fetch_assoc($result)) {
+
+            $status='';
+            switch ($row['status']) {
+                case 'Processing':
+                    $status ='btn-warning';
+                    break;
+                case 'Confirmed':
+                    $status = 'btn-success';
+                    break;
+                case 'Rejected':
+                    $status = 'btn-danger';
+                    break;
+                case 'Canceled';
+                    $status = 'btn-danger';
+            }
+
             echo '<tr>';
             echo '<td>' . $row['id'] . '</td>';
             echo '<td class="user-name">' . $row['first_name'] . ' ' . $row['last_name'] . '</td>';
@@ -150,6 +167,15 @@ function showorders()
             echo '<td>' . $row['rentDate'] . '</td>';
             echo '<td>' . $row['orderDate'] . '</td>';
             echo '<td>' . $row['Address'] . '</td>';
+            echo '<td class="status"> <button id="statusButton_'. $row['id'] .'" class="btn '.$status.'" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_'. $row['id'] .'" aria-expanded="false" aria-controls="collapseExample">' . $row['status'] . '</button>';
+            if($row['status']!='Canceled')
+            {echo'<div class="collapse" id="collapse_'. $row['id'] .'">
+              <div class="card card-body">
+              <button class="btn btn-success" data-bs-toggle="collapse" data-bs-target="#collapse_'. $row['id'] .'" onclick="confirmOrder('. $row['id'] .')">Confirm</button>
+              <button class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapse_'. $row['id'] .'" aria-expanded="false" aria-controls="collapseExample" onclick="rejectOrder('. $row['id'] .')">Reject</button>
+              </div>
+            </div>';}
+            echo'</td>';
             echo '</tr>';
         }
         echo '</table>';
@@ -173,11 +199,28 @@ function showorders()
                     <th>Rent Date</th>
                     <th>Total</th>
                     <th>Order Date</th>
+                    <th>Status</th>
                 </tr>
          </thead>
          <tbody>';
 
             while ($row = mysqli_fetch_assoc($result)) {
+
+                $status='';
+                switch ($row['status']) {
+                    case 'Processing':
+                        $status ='btn-warning';
+                        break;
+                    case 'Confirmed':
+                        $status = 'btn-success';
+                        break;
+                    case 'Rejected':
+                        $status = 'btn-danger';
+                        break;
+                    case 'Canceled';
+                        $status = 'btn-danger';
+                }
+
                 echo '<tr>';
                 echo '<td>' . $row['id'] . '</td>';
                 echo '<td>' . $row['city'] . '</td>';
@@ -188,6 +231,15 @@ function showorders()
                 echo '<td>' . $row['rentDate'] . '</td>';
                 echo '<td>' . $row['total'] . ' DH</td>';
                 echo '<td>' . $row['orderDate'] . '</td>';
+                echo '<td class="status"> <button id="statusButton_'. $row['id'] .'" class="btn '.$status.'" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_'. $row['id'] .'" aria-expanded="false" aria-controls="collapseExample">' . $row['status'] . '</button>';
+                if($row['status'] != 'Canceled' && $row['status'] != 'Confirmed')
+                {echo '<div class="collapse" id="collapse_'. $row['id'] .'">
+                  <div class="card card-body">
+                <button type="button" class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapse_'. $row['id'] .'" onclick="cancelOrder('. $row['id'] .')">Cancel</button>
+                  </div>
+                </div>';
+                }
+                echo'</td>';
                 echo '</tr>';
             }
             echo '</tbody>';
