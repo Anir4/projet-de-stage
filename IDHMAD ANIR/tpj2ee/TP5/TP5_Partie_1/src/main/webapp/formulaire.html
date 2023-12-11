@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=*, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="ServletTraitement" method="post">
+        Nom :
+        <input type="text" name="prenom"><br>
+        Prenom :
+        <input type="text" name="nom"><br>
+        Homme
+        <input type="radio" value="H" name="sexe">
+        Femme
+        <input type="radio" value="F" name="sexe"><br>
+        Etudiant
+        <input type="radio" value="Etudiant" name="fonction" checked="checked"><br>
+        Ingenieur
+        <input type="radio" value="Ingenieur" name="fonction"><br>
+        Enseignant
+        <input type="radio" value="Enseignant" name="fonction"><br>
+        Retraite
+        <input type="radio" value="Retraite" name="fonction"><br>
+        Autre
+        <input type="radio" value="Autre" name="fonction"><br>
+        Choix des loisirs : <br>
+        Football : 
+        <input type="checkbox" name="loisir" value="Football"><br>
+        Natation : 
+        <input type="checkbox" name="loisir" value="Natation"><br>
+        Lecture : 
+        <input type="checkbox" name="loisir" value="Lecture"><br>
+        Tennis : 
+        <input type="checkbox" name="loisir" value="Tennis"><br>
+        Golf : 
+        <input type="checkbox" name="loisir" value="Golf"><br>
+        <input type="submit" value="Envoyer">
+    </form>
+    <a href="ServletTraitement?prenom=Youssef&nom=Alami"> lien </a>
+</body>
+</html>
